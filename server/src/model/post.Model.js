@@ -1,0 +1,54 @@
+const mongoose = require("mongoose");
+
+const postSchema = new mongoose.Schema(
+    {
+        title: {
+            type: String,
+            required: [true, "Title is required"],
+            trim: true,
+            minlength: 3
+        },
+
+        body: {
+            type: String,
+            default: ""
+        },
+
+        image: {
+            type: String,
+            default: ""
+        },
+
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true
+        },
+
+        upvotes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+
+        downvotes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+
+        comments: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Comment"
+            }
+        ]
+    },
+    { timestamps: true }
+);
+
+const postModel = mongoose.model("Post", postSchema);
+
+module.exports = postModel;
