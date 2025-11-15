@@ -7,15 +7,15 @@ import Login from '../pages/Login';
 
 function Mainroutes() {
   return (
-    <div className='px-10'>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/post' element={<Post />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-      </Routes>
-    </div>
+
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/profile' element={<Profile />} />
+      <Route path='/post' element={<Post />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+    </Routes>
+
   )
 }
 

@@ -34,7 +34,8 @@ function Register() {
   ];
 
   return (
-    <div className="m-auto flex w-full max-w-5xl overflow-hidden rounded shadow-2xl mt-6" style={{ height: '550px' }}>
+   <div className='flex justify-center items-center h-full'>
+     <div className="flex w-full max-w-5xl overflow-hidden rounded shadow-2xl h-[40vw]">
       {/* Left Side - White Login Form */}
       <div className="w-1/2 bg-white px-15 flex flex-col justify-between">
         <div className="flex-1 flex flex-col justify-center">
@@ -55,7 +56,7 @@ function Register() {
               />
             </div>
             <div className="mb-5">
-              <label className="block text-[10px] font-medium text-gray-900 mb-2">username</label>
+              <label className="block text-[10px] font-medium text-gray-900 mb-2">Username</label>
               <input
                 type='text'
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-[10px]"
@@ -117,6 +118,7 @@ function Register() {
         </div>
       </div>
     </div>
+   </div>
   );
 }
 
