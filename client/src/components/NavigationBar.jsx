@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 function NavigationBar() {
   return (
-    <div className='px-20 py-5 flex items-center justify-between text-white'>
+    <div className='px-20 py-5 flex w-screen items-center justify-between text-white fixed'>
       <div className='text-2xl'>Connections</div>
 
       <div className='flex gap-10 uppercase font-mono px-5 py-3 rounded backdrop-blur-3xl' >
