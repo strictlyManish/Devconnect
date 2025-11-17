@@ -12,12 +12,11 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user once on app load
   useEffect(() => {
     axios.get("/user", { withCredentials: true })
       .then(res => setUser(res.data))
       .catch(() => setUser(null))
-      .finally(() => setLoading(false)); // ⭐ STOP LOADING
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div className="grid place-content-center h-screen w-screen">
