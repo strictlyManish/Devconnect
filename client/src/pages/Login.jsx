@@ -1,16 +1,11 @@
 import { ChevronRight, BookOpen, Map, Sparkles, Users } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import axios from "../api/axios";
 
 function Login() {
   const navigate = useNavigate()
-
-
-
-
-  const handleSubmit = () => {
-    console.log('Login:', { email, password, rememberMe });
-    alert('Login submitted!');
-  };
 
   const menuItems = [
     {
@@ -35,9 +30,42 @@ function Login() {
     },
   ];
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
+
+  const loginController = async ({ username, password }) => {
+    try {
+      await axios.post(
+        "/auth/login",
+        {
+          username: username,
+          password: password,
+        }
+      );
+      toast.success("Account login successfully!");
+      navigate('/')
+      reset();
+    }
+    catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message || "login failed!");
+      }
+      else if (error.request) {
+        toast.error("Server not responding. Check your network or CORS settings.");
+      }
+      else {
+        toast.error("Something went wrong. Try again.");
+      }
+    }
+  }
+
   return (
-    <div className='flex justify-center items-center h-full'>
-      <div className="flex w-full max-w-5xl overflow-hidden rounded shadow-2xl h-[42vw]">
+    <div className='flex justify-center items-center min-h-screen'>
+      <div className="flex w-full max-w-5xl overflow-hidden rounded shadow-2xl h-[35vw]">
         {/* Left Side - White Login Form */}
         <div className="w-1/2 bg-white px-15 flex flex-col justify-between">
           <div className="flex-1 flex flex-col justify-center">
@@ -46,10 +74,11 @@ function Login() {
               <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">Welcome Back !</h1>
               <p className="text-gray-600 text-[10px] text-center">Please enter your details.</p>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(loginController)} >
               <div className="mb-5">
-                <label className="block text-[10px] font-medium text-gray-900 mb-2">Username</label>
+                <label className="block text-[10px] font-medium text-gray-900 mb-2">Username <sup> {errors.username && <span className='text-red-500'>*</span>}</sup> </label>
                 <input
+                  {...register("username", { required: true })}
                   type='text'
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-[10px]"
                   placeholder=""
@@ -58,8 +87,9 @@ function Login() {
 
               {/* Password Input */}
               <div className="mb-5">
-                <label className="block text-[10px] font-medium text-gray-900 mb-2">Password</label>
+                <label className="block text-[10px] font-medium text-gray-900 mb-2">Password <sup> {errors.password && <span className='text-red-500'>*</span>}</sup> </label>
                 <input
+                  {...register("password", { required: true })}
                   type="password"
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-[10px]"
                   placeholder=""

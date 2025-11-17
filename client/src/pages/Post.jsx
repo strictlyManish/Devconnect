@@ -8,7 +8,7 @@ export default function Post() {
   const [publishTiming, setPublishTiming] = useState('immediate');
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center  justify-center">
+    <div className="min-h-screen  text-white flex items-center  justify-center">
       <div className="max-w-7xl mx-auto">
       
         {/* Main Content */}

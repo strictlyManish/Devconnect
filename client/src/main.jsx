@@ -7,6 +7,6 @@ import { Toaster } from 'react-hot-toast'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
-    <Toaster position='top-right' />
+    <Toaster position='bottom-left' />
   </BrowserRouter>
 )
