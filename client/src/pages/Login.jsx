@@ -39,13 +39,13 @@ function Login() {
 
   const loginController = async ({ username, password }) => {
     try {
-      await axios.post(
+     const res =  await axios.post(
         "/auth/login",
         {
           username: username,
           password: password,
         }
-      );
+      );  
       toast.success("Account login successfully!");
       navigate('/')
       reset();

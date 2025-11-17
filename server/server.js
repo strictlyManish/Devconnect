@@ -4,6 +4,7 @@ const connectDB = require("./src/config/db");
 const app = express();
 const authRoutes = require("./src/routes/auth.route");
 const postRoutes = require("./src/routes/post.route");
+const getRoutes = require("./src/routes/getUser.route")
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
@@ -20,7 +21,7 @@ app.use(cookieParser());
 // Routes or api 
 app.use("/auth", authRoutes)
 app.use("/post", postRoutes)
-
+app.use("/",getRoutes)
 
 
 
