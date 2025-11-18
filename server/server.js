@@ -7,6 +7,7 @@ const postRoutes = require("./src/routes/post.route");
 const getRoutes = require("./src/routes/getUser.route")
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const fileUpload  = require("express-fileupload");
 
 // Middlewares
 app.use(cors({
@@ -16,7 +17,7 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(fileUpload());
 
 // Routes or api 
 app.use("/auth", authRoutes)

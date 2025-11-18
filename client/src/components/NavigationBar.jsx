@@ -13,7 +13,7 @@ function NavigationBar() {
       const res = await axios.get("auth/logout")
       toast.success('logout')
     } catch (error) {
-
+      
     }
   }
 

@@ -1,25 +1,20 @@
+const { nanoid } = require("nanoid");
+const imagekit = require("../config/imagekit");
 const postModel = require("../model/post.Model");
 
 const postController = async (req, res) => {
-    const { title, body, image } = req.body;
 
-    if (!title) {
-        return res.status(400).json({
-            message: 'Title is required'
-        })
-    };
+    const file = req.file;
+    console.log(file)
+    const upload = await imagekit.upload({
+        file: file.data,
+        fileName: nanoid('6')
+    })
 
-    const post = await postModel.create({
-        title,
-        body,
-        image,
-        author: req?.user?.id,
-    });
 
-    res.status(201).json({
-        message: "Post created successfully",
-        post
-    });
+    res.status(200).json({
+        upload
+    })
 };
 
 

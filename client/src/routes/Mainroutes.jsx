@@ -7,6 +7,7 @@ import Post from './../pages/Post';
 import Login from './../pages/Login';
 import { Route, Routes } from "react-router-dom";
 import { Loader } from "lucide-react";
+import Register from './../pages/Register';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,36 +21,44 @@ function App() {
   }, []);
 
   if (loading) return <div className="grid place-content-center h-screen w-screen">
-  <Loader className="text-white animate-spin h-10 w-10" />
-</div>;
+    <Loader className="text-white animate-spin h-10 w-10" />
+  </div>;
 
   return (
     <Routes>
-      <Route 
-        path="/" 
+      <Route
+        path="/"
         element={
           <ProtectedRoute user={user}>
             <Home />
           </ProtectedRoute>
-        } 
+        }
       />
 
-      <Route 
-        path="/profile" 
+      <Route
+        path="/profile"
         element={
           <ProtectedRoute user={user}>
             <Profile />
           </ProtectedRoute>
-        } 
+        }
       />
 
-      <Route 
-        path="/post" 
+      <Route
+        path="/post"
         element={
           <ProtectedRoute user={user}>
             <Post />
           </ProtectedRoute>
-        } 
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <ProtectedRoute user={user}>
+            <Register />
+          </ProtectedRoute>
+        }
       />
 
       {/* Public Route */}
