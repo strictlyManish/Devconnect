@@ -8,7 +8,6 @@ const postController = async (req, res) => {
         const { title, body } = req.body;
         const user = req.user;
 
-        console.log(user)
         if (!file) {
             return res.status(400).json({ error: "No file uploaded" });
         }
