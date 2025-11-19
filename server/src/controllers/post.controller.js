@@ -37,7 +37,22 @@ const postController = async (req, res) => {
     }
 };
 
+const getallPostController = async (req, res) => {
+    try {
+        const post = await postModel.find();
+
+        return res.status(200).json({
+            meaasge: 'Post Getting Sucessfull',
+            post
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message:'Something is going wrong'
+        })
+    }
+}
 
 
 
-module.exports = postController;
+
+module.exports = {postController,getallPostController};

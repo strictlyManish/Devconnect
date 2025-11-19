@@ -32,7 +32,7 @@ function NavigationBar() {
 
       <div className="flex gap-10 items-center uppercase font-mono px-5 py-3 rounded backdrop-blur-3xl">
         <NavLink to="/" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>
-          Home
+          Feed
         </NavLink>
 
         <NavLink to="/profile" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>

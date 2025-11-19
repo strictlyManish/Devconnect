@@ -8,7 +8,14 @@ import { useNavigate } from 'react-router-dom';
 export default function Post() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const [preview, setPreview] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const [name,setname] = useState('loading');
+  const [email,Setemail] = useState('loading');
+  const [url,Seturl] = useState('loading');
+
+
+
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -39,6 +46,18 @@ export default function Post() {
       toast.error("Failed to create post");
     }
   };
+
+
+  const getuser = async () =>{
+    const {data} = await axios.get("/user");
+
+    const {avtar,email,username} = data.userinfo;
+    setname(username)
+    Seturl(avtar);
+    Setemail(email)
+  }
+
+  getuser()
 
   return (
     <div className="min-h-screen text-white flex items-center justify-center bg-black p-4">
@@ -101,8 +120,8 @@ export default function Post() {
               <span className="text-white font-semibold">MW</span>
             </div>
             <div>
-              <p className="text-white font-medium">Manish Kumar</p>
-              <p className="text-gray-500 text-sm">127.7k followers</p>
+              <p className="text-white font-medium">{name}</p>
+              <p className="text-gray-500 text-sm">{email}</p>
             </div>
           </div>
 
