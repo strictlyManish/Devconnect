@@ -7,25 +7,23 @@ const postRoutes = require("./src/routes/post.route");
 const getRoutes = require("./src/routes/getUser.route")
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const fileUpload  = require("express-fileupload");
 
 // Middlewares
 app.use(cors({
-    origin: "http://localhost:5173",   // your frontend URL
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
-}))
+}));
+
+
+app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cookieParser());
-app.use(fileUpload());
 
 // Routes or api 
 app.use("/auth", authRoutes)
 app.use("/post", postRoutes)
 app.use("/",getRoutes)
-
-
-
 
 
 
