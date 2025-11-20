@@ -1,29 +1,27 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from "react";
-import axios from "../api/axios"
-import toast from 'react-hot-toast';
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import axios from "../api/axios";
+import toast from "react-hot-toast";
+import { BadgePlus, CloudUpload, ContactRound, LogIn, LogOut, Telescope } from "lucide-react";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
-function NavigationBar() {
+export default function NavigationBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
 
   const logoutController = async () => {
     try {
-      const res = await axios.get("auth/logout")
-      toast.success('logout')
+      await axios.get("auth/logout");
+      toast.success("Logout Successful");
     } catch (error) {
-      
+      toast.error("Logout Failed");
     }
-  }
+  };
 
   useEffect(() => {
-    const userCookie = document.cookie
-
-    if (userCookie) {
-      setIsLoggedIn(true)
+    if (document.cookie.includes("user")) {
+      setIsLoggedIn(true);
     }
-
   }, []);
 
   return (
@@ -31,29 +29,56 @@ function NavigationBar() {
       <div className="text-2xl">Thought</div>
 
       <div className="flex gap-10 items-center uppercase font-mono px-5 py-3 rounded backdrop-blur-3xl">
-        <NavLink to="/" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>
-          Feed
+        
+        {/* Home Icon */}
+        <NavLink to="/" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+          <Telescope
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content="Go to Home"
+            data-tooltip-place="bottom"
+          />
         </NavLink>
 
-        <NavLink to="/profile" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>
-          Profile
+        {/* Profile */}
+        <NavLink to="/profile" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+          <ContactRound
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content="Your Profile"
+          />
         </NavLink>
 
-        <NavLink to="/post" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>
-          Post
+        {/* Post */}
+        <NavLink to="/post" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+          <CloudUpload
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content="Upload a Post"
+          />
         </NavLink>
 
+        {/* Login / Logout */}
         {isLoggedIn ? (
-          <button onClick={logoutController} className='bg-gray-700 px-2 py-2 rounded-3xl'>Logout</button>
+          <button
+            onClick={logoutController}
+            className="bg-gray-700 px-2 py-2 rounded-3xl"
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content="Logout"
+          >
+            <LogIn />
+          </button>
         ) : (
-          <NavLink to="/register" className={(e) => (e.isActive ? "border-b-2 transition-all" : "")}>
-            Sign In
+          <NavLink
+            to="/register"
+            className={(e) => (e.isActive ? "scale-105 transition-all" : "")}
+            data-tooltip-id="navbar-tooltip"
+            data-tooltip-content="Sign In"
+          >
+            <LogOut />
           </NavLink>
         )}
+
       </div>
+
+      <Tooltip id="navbar-tooltip" />
     </div>
   );
 }
-
-
-export default NavigationBar

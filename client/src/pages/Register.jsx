@@ -66,7 +66,7 @@ function Register() {
   ];
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
+    <div className='flex justify-center items-center min-h-screen '>
       <div className="flex w-full max-w-5xl overflow-hidden rounded shadow-2xl h-[35vw]">
         {/* Left Side - White Login Form */}
         <div className="w-1/2 bg-white px-15 flex flex-col justify-between">
