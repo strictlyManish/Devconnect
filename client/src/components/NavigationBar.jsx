@@ -34,7 +34,7 @@ export default function NavigationBar() {
         <NavLink to="/" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
           <Telescope
             data-tooltip-id="navbar-tooltip"
-            data-tooltip-content="Go to Home"
+            data-tooltip-content="explore"
             data-tooltip-place="bottom"
           />
         </NavLink>
@@ -43,7 +43,7 @@ export default function NavigationBar() {
         <NavLink to="/profile" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
           <ContactRound
             data-tooltip-id="navbar-tooltip"
-            data-tooltip-content="Your Profile"
+            data-tooltip-content="profile"
           />
         </NavLink>
 
