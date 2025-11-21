@@ -1,25 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import axios from "../api/axios"
+import React, { useEffect, useState } from "react";
+import axios from "../api/axios";
+import Card from "../components/Card";
+
 function Feed() {
+  const [data, setData] = useState([]); // Correct: use array
 
-  const [data,setData] = useState('loaidng..')
-
-  const GetPost = async () =>{
-     const {data} = await axios.get("/post");
-    if(data){
-      setData(data.post)
+  const GetPost = async () => {
+    try {
+      const res = await axios.get("/post");
+      if (res.data) {
+        setData(res.data.post); // Set posts
+      }
+    } catch (error) {
+      console.log("Error fetching posts:", error);
     }
   };
 
-// console.log(data);
+  useEffect(() => {
+    GetPost(); // Call API
+  }, []);
 
-//   useEffect(()=>{
-//     GetPost()
-//   },[])
-  
   return (
-    <div className='h-screen w-screen'>Feed</div>
-  )
+    <div className="mt-5 px-10 py-15 min-h-screen">
+
+      {data.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        data.map((obj) => (
+          <Card key={obj.id} data={obj} />  // Pass single post
+        ))
+      )}
+    </div>
+  );
 }
 
-export default Feed
+export default Feed;

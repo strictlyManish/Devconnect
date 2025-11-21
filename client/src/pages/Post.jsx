@@ -60,7 +60,7 @@ export default function Post() {
   getuser()
 
   return (
-    <div className="min-h-screen text-white flex items-center justify-center bg-black p-4">
+    <div className="min-h-screen text-white flex items-center justify-centerp-4">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         {/* Left Section */}

@@ -26,12 +26,12 @@ export default function NavigationBar() {
 
   return (
     <div className="px-20 py-5 flex w-screen items-center justify-between text-white fixed">
-      <div className="text-2xl">Thought</div>
+      <div className="text-4xl" style={{fontFamily:'Momo Trust Display'}}>Thought.</div>
 
       <div className="flex gap-10 items-center uppercase font-mono px-5 py-3 rounded backdrop-blur-3xl">
         
         {/* Home Icon */}
-        <NavLink to="/" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+        <NavLink to="/" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <Telescope
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="explore"
@@ -40,7 +40,7 @@ export default function NavigationBar() {
         </NavLink>
 
         {/* Profile */}
-        <NavLink to="/profile" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+        <NavLink to="/profile" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <ContactRound
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="profile"
@@ -48,7 +48,7 @@ export default function NavigationBar() {
         </NavLink>
 
         {/* Post */}
-        <NavLink to="/post" className={(e) => (e.isActive ? "scale-105 transition-all" : "")}>
+        <NavLink to="/post" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <CloudUpload
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="Upload a Post"
@@ -58,12 +58,9 @@ export default function NavigationBar() {
         {/* Login / Logout */}
         {isLoggedIn ? (
           <button
-            onClick={logoutController}
-            className="bg-gray-700 px-2 py-2 rounded-3xl"
-            data-tooltip-id="navbar-tooltip"
-            data-tooltip-content="Logout"
+           
           >
-            <LogIn />
+            login
           </button>
         ) : (
           <NavLink
@@ -72,7 +69,7 @@ export default function NavigationBar() {
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="Sign In"
           >
-            <LogOut />
+           Sign In
           </NavLink>
         )}
 
