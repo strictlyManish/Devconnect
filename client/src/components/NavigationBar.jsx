@@ -26,13 +26,14 @@ export default function NavigationBar() {
 
   return (
     <div className="px-20 py-5 flex w-screen items-center justify-between text-white fixed">
-      <div className="text-4xl" style={{fontFamily:'Momo Trust Display'}}>Thought.</div>
+      <div className="text-4xl" style={{ fontFamily: 'Momo Trust Display' }}>Thought.</div>
 
       <div className="flex gap-10 items-center uppercase font-mono px-5 py-3 rounded backdrop-blur-3xl">
-        
+
         {/* Home Icon */}
         <NavLink to="/" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <Telescope
+            className="outline-0"
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="explore"
             data-tooltip-place="bottom"
@@ -42,6 +43,7 @@ export default function NavigationBar() {
         {/* Profile */}
         <NavLink to="/profile" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <ContactRound
+            className="outline-0"
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="profile"
           />
@@ -50,6 +52,7 @@ export default function NavigationBar() {
         {/* Post */}
         <NavLink to="/post" className={(e) => (e.isActive ? "scale-105 transition-all text-pink-500" : "")}>
           <CloudUpload
+            className="outline-0"
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="Upload a Post"
           />
@@ -58,7 +61,7 @@ export default function NavigationBar() {
         {/* Login / Logout */}
         {isLoggedIn ? (
           <button
-           
+
           >
             login
           </button>
@@ -69,7 +72,7 @@ export default function NavigationBar() {
             data-tooltip-id="navbar-tooltip"
             data-tooltip-content="Sign In"
           >
-           Sign In
+            Sign In
           </NavLink>
         )}
 

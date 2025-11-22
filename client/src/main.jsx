@@ -7,10 +7,11 @@ import { Toaster } from 'react-hot-toast'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
-    <Toaster position='bottom-left' toastOptions={{
+    <Toaster position='bottom-right' toastOptions={{
       className: '',
       style: {
         fontSize: '10px',
+        fontFamily:'cursive'
       },
     }} />
   </BrowserRouter>

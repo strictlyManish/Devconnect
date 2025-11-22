@@ -4,7 +4,7 @@ import Mainroutes from './routes/Mainroutes'
 function App() {
 
   return (
-    <div className='bg-gray-700 text-black  overflow-x-hidden'>
+    <div className='bg-gray-800 text-black  overflow-x-hidden overflow-auto'>
       <NavigationBar/>
       <Mainroutes />
     </div>
